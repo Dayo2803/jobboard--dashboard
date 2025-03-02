@@ -7,12 +7,12 @@ import ApplyButton from '@/app/components/Helper/ApplyButton';
 import Link from 'next/link';
 import JobDetailsData from '@/jobdescription';
 
-interface JobDetailsProps {
-    params: { id: string }; 
+export async function generateStaticParams() {
+    return JobData.map((job) => ({ id: job.id.toString() }));
 }
 
-const JobDetails = async ({ params }: JobDetailsProps) => {
-    const { id } = params; 
+export default async function JobDetails({ params }: { params: { id: string } }) { 
+    const { id } = params;
     const singleJob = JobData.find((job) => job.id.toString() === id);
     const jobDescription = JobDetailsData.find((job) => job.id.toString() === id);
     const session = await getServerSession(authOptions);
@@ -77,6 +77,4 @@ const JobDetails = async ({ params }: JobDetailsProps) => {
             </div>
         </div>
     );
-};
-
-export default JobDetails;
+}
