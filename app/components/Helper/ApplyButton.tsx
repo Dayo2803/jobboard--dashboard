@@ -5,8 +5,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 import { X } from 'lucide-react';
+import { Session } from "next-auth"; // Ensure Session type is imported
 
-const ApplyButton = () => {
+interface ApplyButtonProps {
+    session: Session | null;
+}
+
+const ApplyButton: React.FC<ApplyButtonProps> = ({ session }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', cv: null });
 
@@ -35,12 +40,16 @@ const ApplyButton = () => {
 
     return (
         <div>
-            <button 
-                onClick={openModal} 
-                className="px-8 py-3 bg-green-500 text-white font-semibold rounded-full transition-all hover:bg-green-700 shadow-lg"
-            >
-                Apply Now
-            </button>
+            {session ? (
+                <button 
+                    onClick={openModal} 
+                    className="px-8 py-3 bg-green-500 text-white font-semibold rounded-full transition-all hover:bg-green-700 shadow-lg"
+                >
+                    Apply Now
+                </button>
+            ) : (
+                <p className="text-red-500 font-semibold">Please sign in to apply</p>
+            )}
 
             {isOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
