@@ -7,16 +7,21 @@ import ApplyButton from '@/app/components/Helper/ApplyButton';
 import Link from 'next/link';
 import JobDetailsData from '@/jobdescription';
 
-const JobDetails = async ({ params }: { params: { id: string } }) => {
-    const singleJob = JobData.find((job) => job.id.toString() === params.id);
-    const jobDescription = JobDetailsData.find((job) => job.id.toString() === params.id);
+interface JobDetailsProps {
+    params: { id: string };
+}
+
+const JobDetails = async ({ params }: JobDetailsProps) => {
+    const { id } = params;  // Extract id from params properly
+    const singleJob = JobData.find((job) => job.id.toString() === id);
+    const jobDescription = JobDetailsData.find((job) => job.id.toString() === id);
     const session = await getServerSession(authOptions);
 
     if (!singleJob || !jobDescription) {
         return <p className="text-center mt-10 text-gray-500">Job not found</p>;
     }
 
-    const relatedJobs = JobData.filter((job) => job.id.toString() !== params.id).slice(0, 4);
+    const relatedJobs = JobData.filter((job) => job.id.toString() !== id).slice(0, 4);
 
     return (
         <div className="mt-20 mb-12">

@@ -12,7 +12,6 @@ const Nav = async () => {
   return (
     <div className="h-[13vh] shadow-md bg-white flex items-center">
       <div className="w-[90%] md:w-[80%] mx-auto flex items-center justify-between">
-        {/* Logo */}
         <div className="w-[80px] h-[80px] md:w-[70px] md:h-[70px]">
           <Link href="/" passHref>
             <Image
@@ -25,7 +24,6 @@ const Nav = async () => {
           </Link>
         </div>
 
-        {/* Sign Up & Post a Job */}
         <div className="flex items-center space-x-4">
           {!session && (
             <Link href="/signup">

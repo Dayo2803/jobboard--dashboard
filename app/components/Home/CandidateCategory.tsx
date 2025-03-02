@@ -4,7 +4,6 @@ import Image from "next/image";
 const CandidateCategory = () => {
   return (
     <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 min-h-[50vh]">
-      {/* Employer Card */}
       <div className="cursor-pointer hover:scale-110 hover:shadow-sm transition-all duration-300 bg-[#FCECE2] p-2 rounded-lg shadow-md w-60 md:w-1/3 flex flex-col items-center text-center">
         <Image
           src="/images/employers.jpg"
@@ -21,7 +20,6 @@ const CandidateCategory = () => {
         </button>
       </div>
 
-      {/* Candidate Card */}
       <div className="cursor-pointer hover:scale-110 hover:shadow-sm transition-all duration-300 bg-[#FCECE2] p-2 rounded-lg shadow-md w-60 md:w-1/3 flex flex-col items-center text-center">
         <Image
           src="/images/candidates.gif"
