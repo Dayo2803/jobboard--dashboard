@@ -7,16 +7,12 @@ import ApplyButton from '@/app/components/Helper/ApplyButton';
 import Link from 'next/link';
 import JobDetailsData from '@/jobdescription';
 
-
-
-
 interface JobDetailsProps {
-    params: { id: string };
+    params: { id: string }; 
 }
 
-
 const JobDetails = async ({ params }: JobDetailsProps) => {
-    const { id } = params;  // Extract id from params properly
+    const { id } = params; 
     const singleJob = JobData.find((job) => job.id.toString() === id);
     const jobDescription = JobDetailsData.find((job) => job.id.toString() === id);
     const session = await getServerSession(authOptions);
