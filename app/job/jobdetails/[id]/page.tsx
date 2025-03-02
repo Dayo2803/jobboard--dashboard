@@ -7,9 +7,13 @@ import ApplyButton from '@/app/components/Helper/ApplyButton';
 import Link from 'next/link';
 import JobDetailsData from '@/jobdescription';
 
+
+
+
 interface JobDetailsProps {
     params: { id: string };
 }
+
 
 const JobDetails = async ({ params }: JobDetailsProps) => {
     const { id } = params;  // Extract id from params properly
@@ -30,7 +34,7 @@ const JobDetails = async ({ params }: JobDetailsProps) => {
                     <JobCard job={singleJob} />
                 </div>
                 {session ? (
-                    <ApplyButton session={session} />
+                    <ApplyButton />
                 ) : (
                     <Link href='/signup'>
                         <button className='px-8 py-3 bg-emerald-600 rounded-full text-white transition-all hover:bg-emerald-700'>
