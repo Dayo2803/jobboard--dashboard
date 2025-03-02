@@ -34,7 +34,7 @@ const JobDetails = async ({ params }: JobDetailsProps) => {
                     <JobCard job={singleJob} />
                 </div>
                 {session ? (
-                    <ApplyButton />
+                    <ApplyButton session={session} />
                 ) : (
                     <Link href='/signup'>
                         <button className='px-8 py-3 bg-emerald-600 rounded-full text-white transition-all hover:bg-emerald-700'>
